@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = process.env.REACT_APP_BACKEND_URL || 'https://api.realworld.io/api';
+const API_ROOT = 'http://dimon.pp.ua/api';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -13,7 +13,7 @@ const tokenPlugin = req => {
   if (token) {
     req.set('authorization', `Token ${token}`);
   }
-}
+} 
 
 const requests = {
   del: url =>
