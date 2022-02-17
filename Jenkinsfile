@@ -18,6 +18,7 @@ pipeline {
             steps {
                 echo 'moving the code into working environment or making the artifact'
                 
+                
             }
         }
         
