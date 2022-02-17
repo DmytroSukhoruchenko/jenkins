@@ -13,13 +13,13 @@ pipeline {
         stage('make image') {
             steps {
                 dir ('') {
-                    sh 'docker build -t myfirstdockercraft/simplewhalejenkins:v1 . '
+                    sh 'docker build -t myfirstdockercraft/simplewhalejenkins:v2 . '
                 }
             }
         }
         stage('push') {
             steps {
-                sh 'docker push myfirstdockercraft/simplewhalejenkins:v1'
+                sh 'docker push myfirstdockercraft/simplewhalejenkins:v2'
             }
         }
         stage('deploy kuber') {
