@@ -3,7 +3,7 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'http://dimon.pp.ua/api';
+const API_ROOT = 'https://dimon.pp.ua/api';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
