@@ -2,6 +2,14 @@ pipeline {
     agent any
 
     stages {
+        stage("docker auth") {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'dockerhub', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh 'docker login -u $USERNAME -p $PASSWORD'
+                }
+            }
+        }    
+                
         stage('make image') {
             steps {
                 dir ('') {
