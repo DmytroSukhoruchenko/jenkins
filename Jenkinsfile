@@ -24,13 +24,14 @@ pipeline {
         }
         stage('deploy kuber') {
             steps {
-                echo 'moving the code into working environment or making the artifact'
-                withCredentials(credentialsId: 'kuber', serverUrl: '') {
-                    sh '''
+                // echo 'moving the code into working environment or making the artifact'
+                script {
+                    kubernetesDeploy(configs: "deployfront.yaml", kubeconfigId: "kuber") /*  {
+                    // sh '''
                         cd k8s-helm
                         helm upgrade --install default --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
-                        '''
-                }
+                        '''  */
+                } 
             }
         }
         stage('cleanup') {
