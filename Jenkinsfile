@@ -25,7 +25,7 @@ pipeline {
         stage('deploy kuber') {
             steps {
                 echo 'moving the code into working environment or making the artifact'
-                withKubeConfig(credentialsId: 'kuber', serverUrl: '') {
+                withCredentials(credentialsId: 'kuber', serverUrl: '') {
                     sh '''
                         cd k8s-helm
                         helm upgrade --install default --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
