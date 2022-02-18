@@ -13,22 +13,31 @@ pipeline {
         stage('make image') {
             steps {
                 dir ('') {
-                    sh 'docker build -t myfirstdockercraft/simplewhalejenkins:v2 . '
+                    sh 'docker build -t myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} . '
                 }
             }
         }
         stage('push') {
             steps {
-                sh 'docker push myfirstdockercraft/simplewhalejenkins:v2'
+                sh 'docker push myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER}'
             }
         }
         stage('deploy kuber') {
             steps {
                 echo 'moving the code into working environment or making the artifact'
-                            
+                withKubeConfig(credentialsId: 'kuber', serverUrl: '') {
+                    sh '''
+                        cd k8s-helm
+                        helm upgrade --install default --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
+                        '''
+                }
             }
         }
-        
+        stage('cleanup') {
+            steps {
+                sh 'docker rmi myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER}'
+            }
+        }
     }
     
 }
