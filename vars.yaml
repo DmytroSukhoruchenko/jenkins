@@ -1,5 +1,5 @@
 container:
-  frontendImage   : myfirstdockercraft/simplewhaleJenkins:latest
+  frontImage   : myfirstdockercraft/simplewhaleJenkins:latest
 
 replicaCounts: 1
 
