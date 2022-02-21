@@ -1,5 +1,5 @@
 apiVersion: v2
-name: App-myfirst-HelmChart
+name: default
 description: My  helm chart
 type: application
 version: 1.0.0
