@@ -30,6 +30,7 @@ pipeline {
                         kubectl replace -f /home/dmitriy/kuber/deployfront.yaml
                         '''                             
                 } 
+                
             }
         }
         stage('cleanup') {
