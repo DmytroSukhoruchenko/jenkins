@@ -27,7 +27,8 @@ pipeline {
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
                     sh '''                        
                         helm upgrade --install default --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
-                        '''                                    
+                        '''         
+                    
                 } 
             }
         }
