@@ -23,12 +23,13 @@ pipeline {
             }
         }
         stage('deploy kuber') {
-            steps {
-                // echo 'moving the code into working environment or making the artifact'
+            steps {               
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
                 script {
-                    sh 'kubectl apply -f /home/dmitriy/kuber/deployfront.yaml'
-                    //kubernetesDeploy(configs: "deployfront.yaml", kubeconfigId: "kuber") 
+                    sh '''    //kubectl apply -f /home/dmitriy/kuber/deployfront.yaml' 
+                        cd helm
+                        helm upgrade --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
+                        '''
                     }                
                 } 
             }
