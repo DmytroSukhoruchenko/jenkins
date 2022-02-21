@@ -26,7 +26,8 @@ pipeline {
             steps {               
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
                     sh '''                        
-                        helm upgrade --install default --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
+                        sed -i "s+jenkins:n20+jenkins:n${BUILD_NUMBER}+g" /home/dmitriy/kuber/deployfront.yaml
+                        kubectl replace -f /home/dmitriy/kuber/deployfront.yaml
                         '''         
                     
                 } 
