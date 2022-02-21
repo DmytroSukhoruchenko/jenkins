@@ -27,11 +27,9 @@ pipeline {
                 // echo 'moving the code into working environment or making the artifact'
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
                 script {
-                    try {
-                        sh 'kubectl apply -f /home/dmitriy/kuber/deployfront.yaml'
+                    sh 'kubectl apply -f /home/dmitriy/kuber/deployfront.yaml'
                     //kubernetesDeploy(configs: "deployfront.yaml", kubeconfigId: "kuber") 
-                    }
-                }
+                    }                
                 } 
             }
         }
