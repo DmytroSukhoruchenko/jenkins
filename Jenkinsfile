@@ -25,12 +25,9 @@ pipeline {
         stage('deploy kuber') {
             steps {               
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
-                script {
-                    sh '''    //kubectl apply -f /home/dmitriy/kuber/deployfront.yaml'   
-                        
+                    sh '''                        
                         helm upgrade --set container.frontImage=myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER} ./
-                        '''
-                    }                
+                        '''                                    
                 } 
             }
         }
