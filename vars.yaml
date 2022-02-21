@@ -1,0 +1,6 @@
+container:
+  frontendImage   : myfirstdockercraft/simplewhaleJenkins:latest
+
+replicaCounts: 1
+
+targetCPUUtilizationPercentage: 80
