@@ -26,7 +26,7 @@ pipeline {
             steps {               
                 withKubeConfig(credentialsId: 'jenkube', serverUrl: '') {
                     sh '''                        
-                        sed -i "s+jenkins:n20+jenkins:n${BUILD_NUMBER}+g" /home/dmitriy/kuber/deployfront.yaml
+                        sed -i "s+jenkins:n24+jenkins:n${BUILD_NUMBER}+g" /home/dmitriy/kuber/deployfront.yaml
                         kubectl replace -f /home/dmitriy/kuber/deployfront.yaml
                         '''     
                     
@@ -35,7 +35,11 @@ pipeline {
         }
         stage('cleanup') {
             steps {
-                sh 'docker rmi myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER}'
+                sh '''
+                docker rmi myfirstdockercraft/simplewhalejenkins:n${BUILD_NUMBER}
+                sed -i "s+jenkins:n${BUILD_NUMBER}+jenkins:n24+g" /home/dmitriy/kuber/deployfront.yaml
+                '''
+                
             }
         }
     }
