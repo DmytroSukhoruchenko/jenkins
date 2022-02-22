@@ -18,7 +18,7 @@ import {
 } from '../constants/actionTypes';
 
 const defaultState = {
-  appName: 'Dimon1',
+  appName: 'Dimon11',
   token: null,
   viewChangeCounter: 0
 };
