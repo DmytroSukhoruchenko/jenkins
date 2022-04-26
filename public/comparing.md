@@ -1,7 +1,7 @@
 # GSP dashboards vs Prometheus/Grafana stack :
 
 ## GCP dashboards advantages:
-Gsp has some built-in features for monitoring kubernetes clusters, and so:
+Gsp has some built-in features for monitoring the kubernetes clusters, and so:
 - not needed the additional resources;
 - not needed to install;
 - You can custom tune the appearance of dashboards;
@@ -9,7 +9,7 @@ Gsp has some built-in features for monitoring kubernetes clusters, and so:
 
 ##  Prometheus/Grafana stack advantages:
 - easy to install and configure;
-- more user-friendly interfase;
+- more user-friendly interface;
 - more built-in features;
 - more flexibility(flexible query language);
 - dimensional data model;
@@ -22,7 +22,7 @@ Gsp has some built-in features for monitoring kubernetes clusters, and so:
 ## GSP disadvantages:
 - non stable work and behavior;
 - unflexible;
-- haven't such clarity and visibility(like a Prometheus/Grafana stack);
+- hasn't such clarity and visibility(like a Prometheus/Grafana stack);
 
 ## Prometheus/Grafana stack disadvantages:
 - need to install;
