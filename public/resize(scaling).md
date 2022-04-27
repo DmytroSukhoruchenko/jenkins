@@ -33,6 +33,3 @@ Do not use both Cluster Autoscaler and manual resize commands simultaneously on 
 
      deployment.apps/nginx-ingress-ingress-nginx-controller scaled 
 
-### For autoscale:
-
-     kubectl autoscale deployment/nginx-ingress-ingress-nginx-controller --min=3 --max=7 --cpu-percent=80
